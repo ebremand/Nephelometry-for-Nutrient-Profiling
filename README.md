@@ -7,9 +7,16 @@ The study evaluates nephelometry as a high-throughput method for monitoring fung
 
 ## Repository contents
 
-### `Nephelometry_Analysis.R`
+### `Growth_Curve_Analysis.R`
 
-This script contains the analyses performed on the nephelometric data, including data processing and growth parameter calculations.
+This script processes nephelometric (NTU) and spectrophotometric (OD) growth kinetics and calculates the growth parameters used in the study.
+
+Growth curves are preprocessed by correcting initial signal artifacts, applying baseline correction, and smoothing using LOESS regression. The script then calculates growth rate, lag time, maximum carrying capacity (MCC), MCC time, exponential duration, and area under the curve (AUC).
+
+Growth rate is estimated using a 10 h sliding-window linear regression, while AUC is calculated using trapezoidal numerical integration with the pracma package (v2.4.6).
+
+The complete methodology for growth curve processing and parameter calculation is described in the associated publication.
+
 
 ### `Figure_Publication.R`
 
