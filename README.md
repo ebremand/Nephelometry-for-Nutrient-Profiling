@@ -5,6 +5,8 @@ This repository contains the R scripts used for the data analysis and figure gen
 
 The study evaluates nephelometry as a high-throughput method for monitoring fungal growth and characterizing nutrient utilization in filamentous fungi. Nephelometric measurements are compared with spectrophotometry, colony diameter, and fungal biomass measurements obtained from Petri dishes.
 
+Contact : Justine Colou, justine.colou@univ-angers.fr
+
 ## Repository contents
 
 ### `Growth_Curve_Analysis.R`
