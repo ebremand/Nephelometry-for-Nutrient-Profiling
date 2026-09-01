@@ -11,11 +11,11 @@ The study evaluates nephelometry as a high-throughput method for monitoring fung
 
 This script processes nephelometric (NTU) and spectrophotometric (OD) growth kinetics and calculates the growth parameters used in the study.
 
-Growth curves are preprocessed by correcting initial signal artifacts, applying baseline correction, and smoothing using LOESS regression. The script then calculates growth rate, lag time, maximum carrying capacity (MCC), MCC time, exponential duration, and area under the curve (AUC).
+Raw growth curves were subjected to three preprocessing steps prior to parameter extraction. First, values recorded before the minimum signal detected for each growth curve were replaced by this minimum value to correct potential condensation-related artifacts occurring at the beginning of measurements. Second, baseline correction was performed by subtracting the minimum value from each curve, setting the initial signal to zero. Third, corrected curves were smoothed using a LOESS (LOcally Estimated Scatterplot Smoothing) regression to reduce experimental noise while preserving the overall growth dynamics.
 
-Growth rate is estimated using a 10 h sliding-window linear regression, while AUC is calculated using trapezoidal numerical integration with the pracma package (v2.4.6).
+The growth rate was estimated from the highest slope observed along each growth curve. A sliding window approach was applied using a 10 h window over the growth phase preceding the maximum signal intensity. For each window, a linear regression based on the least-squares method was performed to estimate the slope of signal increase over time. The highest slope among all tested windows was considered the maximum growth rate and was expressed as NTU·h⁻¹ or OD·h⁻¹.
 
-The complete methodology for growth curve processing and parameter calculation is described in the associated publication.
+The regression line corresponding to the growth rate was then used to estimate additional kinetic parameters (Figure 1). The lag time was calculated as the time point at which the tangent line reached the baseline, corresponding to the moment when the extrapolated growth signal reached zero, and was expressed in hours. The maximum carrying capacity (MCC) was defined as the maximum signal value experimentally reached by each growth curve and was expressed as NTU or OD. The MCC time was estimated as the intersection between the tangent line corresponding to the growth rate and the maximum experimentally observed signal, and was expressed in hours. The exponential duration was calculated as the time interval between the lag time and the MCC time, and was expressed in hours. Finally, the area under the growth curve (AUC) was calculated by numerical integration using the trapezoidal method implemented in the trapz function from the pracma R package v2.4.6 and was expressed as NTU·h or OD·h.
 
 
 ### `Figure_Publication.R`
